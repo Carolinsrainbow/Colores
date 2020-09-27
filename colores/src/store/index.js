@@ -1,15 +1,22 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import axios from "axios"
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    colores: {}
   },
   mutations: {
+
   },
   actions: {
+    getColores({
+      commit
+    }) {
+      axios.get("http://localhost:8080/colores.json").then((res) => console.log(res.data))
+    }
   },
-  modules: {
-  }
+  modules: {}
 })

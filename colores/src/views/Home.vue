@@ -1,10 +1,10 @@
 <template>
   <div class="home">
     <input type="text" placeholder="Busquemos un color" />
-    <button>Buscar</button>
+    <button @click="buscar">Buscar</button>
 
     <!-- Incorporación de cards de color -->
-    <div class="container">
+    <div class="container" v-for="(color, index) in colores" :key="index">
       <div clas="row">
         <div class="col-2">
           <b-card
@@ -28,19 +28,21 @@
 </template>
 
 <script>
-import {mapState, mapActions} from "vuex"
+import { mapState, mapActions } from "vuex";
 
 export default {
   name: "Home",
-  computed:{
-    ...mapState(["colores"])
+  computed: {
+    ...mapState(["colores"]),
   },
-  methods:{
-    ...mapActions(["getColores"])
+  methods: {
+    ...mapActions(["getColores"]),
+    buscar(){
+      
+    }
   },
-  created(){
-    this.getColores()
-  }
-
+  created() {
+    this.getColores();
+  },
 };
 </script>

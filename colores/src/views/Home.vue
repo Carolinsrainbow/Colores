@@ -4,9 +4,9 @@
     <button @click="buscar">Buscar</button>
 
     <!-- Incorporación de cards de color -->
-    <div class="container" v-for="(color, index) in colores" :key="index">
+    <div class="container">
       <div clas="row">
-        <div class="col-2">
+        <div class="col-3" v-for="(color, index) in colores" :key="index">
           <b-card
             title="Card Title"
             img-src="https://picsum.photos/600/300/?image=25"
@@ -37,9 +37,7 @@ export default {
   },
   methods: {
     ...mapActions(["getColores"]),
-    buscar(){
-      
-    }
+    buscar() {},
   },
   created() {
     this.getColores();

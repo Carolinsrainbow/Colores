@@ -1,25 +1,24 @@
 <template>
   <div class="home">
-    <input type="text" placeholder="Busquemos un color" />
+    <input
+      type="text"
+      placeholder="Busquemos un color"
+      v-model="colorBuscado"
+    />
     <button @click="buscar">Buscar</button>
 
     <!-- Incorporación de cards de color -->
-    <div class="container">
-      <div clas="row">
+    <div class="container pa-5 my-5 text-center">
+      <div class="row">
         <div class="col-3" v-for="(color, index) in colores" :key="index">
           <b-card
-            title="Card Title"
-            img-src="https://picsum.photos/600/300/?image=25"
+            no-body
+            style="max-width: 20rem"
+            img-src="https://placekitten.com/380/200"
             img-alt="Image"
             img-top
-            tag="article"
-            style="max-width: 20rem"
-            class="mb-2"
           >
-            <b-card-text>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </b-card-text>
+            <b-card-text> Código: {{ color }} </b-card-text>
           </b-card>
         </div>
       </div>
@@ -32,12 +31,20 @@ import { mapState, mapActions } from "vuex";
 
 export default {
   name: "Home",
+  data() {
+    return {
+      colorBuscado: "",
+    };
+  },
   computed: {
-    ...mapState(["colores"]),
+    ...mapState(["colores", "arreglado"]),
   },
   methods: {
     ...mapActions(["getColores"]),
-    buscar() {},
+    buscar() {
+      if (colorBuscado.includes(color)) {
+      }
+    },
   },
   created() {
     this.getColores();

@@ -7,7 +7,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     colores: {},
-    coloresFiltrados: []
+    coloresFiltrados: [],
+    arreglado: null
   },
   mutations: {
     GET_COLORES(state, data) {
@@ -20,16 +21,17 @@ export default new Vuex.Store({
     }) {
       axios.get("http://localhost:8080/colores.json").then((res) => {
         console.log(res.data)
-
+        var arreglado = Object.keys(res.data)
+        console.log(arreglado[0])
         commit("GET_COLORES", res.data)
       })
 
     },
-    getFiltros({
-      commit
-    }) {
+    // getFiltros({
+    //   commit
+    // }) {
 
-    }
+    // }
   },
   modules: {}
 })

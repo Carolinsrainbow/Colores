@@ -5,24 +5,24 @@
       placeholder="Busquemos un color"
       v-model="colorBuscado"
     />
-    <button @click="buscar">Buscar</button>
+    <button>Buscar</button>
 
     <!-- Incorporación de cards de color -->
     <div class="container pa-5 my-5 text-center">
       <div class="row">
-        <div class="col-3" v-for="(color, index) in colores" :key="index">
+        <div class="col-2" v-for="(color, index) in colores" :key="index">
           <b-card
             no-body
             style="max-width: 20rem"
-            img-src="https://placekitten.com/380/200"
-            img-alt="Image"
-            img-top
           >
+                <div id="cajaColor"></div>
+            <b-card-text> Color: </b-card-text>
             <b-card-text> Código: {{ color }} </b-card-text>
           </b-card>
         </div>
       </div>
     </div>
+
   </div>
 </template>
 
@@ -38,16 +38,23 @@ export default {
   },
   computed: {
     ...mapState(["colores", "arreglado"]),
+    coloresFiltrados() {
+      return this.colores.filter((c) => c.colores.includes(this.colorBuscado));
+    },
   },
   methods: {
     ...mapActions(["getColores"]),
-    buscar() {
-      if (colorBuscado.includes(color)) {
-      }
-    },
   },
   created() {
     this.getColores();
   },
 };
 </script>
+
+<style lang="scss" scoped>
+#cajaColor {
+  background-color: aqua;
+  width: 158px;
+  height: 100px;
+}
+</style>

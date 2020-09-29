@@ -8,7 +8,7 @@
     <button>Buscar</button>
 
     <!-- Incorporación de cards de color -->
-    <div class="container pa-5 my-5 text-center">
+    <div class="container pa-5 my-5 mb-5 text-center">
       <div class="row">
         <div class="col-2" v-for="(color, index) in colores" :key="index">
           <b-card
@@ -16,7 +16,7 @@
             style="max-width: 20rem"
           >
                 <div id="cajaColor"></div>
-            <b-card-text> Color: </b-card-text>
+            <b-card-text> Color: {{index}}</b-card-text>
             <b-card-text> Código: {{ color }} </b-card-text>
           </b-card>
         </div>
@@ -33,13 +33,14 @@ export default {
   name: "Home",
   data() {
     return {
-      colorBuscado: "",
+      colorBuscado: ""
     };
   },
   computed: {
     ...mapState(["colores", "arreglado"]),
     coloresFiltrados() {
-      return this.colores.filter((c) => c.colores.includes(this.colorBuscado));
+      return this.colores.filter((c) => c.colores.includes(this.colorBuscado))
+      .sort();
     },
   },
   methods: {

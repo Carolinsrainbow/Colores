@@ -1,8 +1,8 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-import axios from "axios"
+import Vue from "vue";
+import Vuex from "vuex";
+import axios from "axios";
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
@@ -10,22 +10,17 @@ export default new Vuex.Store({
   },
   mutations: {
     GET_COLORES(state, data) {
-      state.colores = data
-    }
+      state.colores = data;
+    },
   },
   actions: {
-    getColores({
-      commit
-    }) {
+    getColores({ commit }) {
       axios.get("http://localhost:8080/colores.json").then((res) => {
-        console.log(res.data)
-        var arreglado = Object.keys(res.data)
-        console.log(arreglado[0])
-        commit("GET_COLORES", res.data)
-      })
+        console.log(res.data);
 
+        commit("GET_COLORES", res.data);
+      });
     },
-
   },
-  modules: {}
-})
+  modules: {},
+});

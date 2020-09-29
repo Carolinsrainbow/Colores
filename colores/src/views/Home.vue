@@ -11,18 +11,14 @@
     <div class="container pa-5 my-5 mb-5 text-center">
       <div class="row">
         <div class="col-2" v-for="(color, index) in colores" :key="index">
-          <b-card
-            no-body
-            style="max-width: 20rem"
-          >
-                <div id="cajaColor"></div>
-            <b-card-text> Color: {{index}}</b-card-text>
+          <b-card no-body style="max-width: 20rem">
+            <div id="cajaColor"></div>
+            <b-card-text> Color: {{ index }}</b-card-text>
             <b-card-text> Código: {{ color }} </b-card-text>
           </b-card>
         </div>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -33,14 +29,15 @@ export default {
   name: "Home",
   data() {
     return {
-      colorBuscado: ""
+      colorBuscado: "",
     };
   },
   computed: {
     ...mapState(["colores", "arreglado"]),
     coloresFiltrados() {
-      return this.colores.filter((c) => c.colores.includes(this.colorBuscado))
-      .sort();
+      return this.colores
+        .filter((c) => c.colores.includes(this.colorBuscado))
+        .sort();
     },
   },
   methods: {
